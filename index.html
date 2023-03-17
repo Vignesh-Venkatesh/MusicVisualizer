@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./CSS/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Music Visualizer</title>
+    </head>
+    <body>
+        <div class="screen-option-div">
+
+            <div class="screen">
+                <canvas id="myCanvas" width="480" height="270"></canvas>
+                <div class="screen-buttons">
+                    <button class="stop-btn fa-solid fa-stop" id="stop-btn"></button>
+                    <button class="pause-btn fa-solid fa-pause" id="pause-btn"></button>
+                    <button class="play-btn fa-solid fa-play" id="play-btn"></button>
+                    <!-- <button class="download-btn fa-solid fa-download"></button> -->
+                </div>
+            </div>
+
+            <div class="option">
+                <div class="import-bar">
+                    <button id="import-song-button">IMPORT SONG</button>
+                    <p id="import-song-name"> </p>
+                </div>
+
+                <div class="options">
+                    <select id="myDropdown">
+                        <option value="" disabled selected>Choose Visualizer Type</option>
+                        <option value="option1" >Frequency Bar Visualizer</option>
+                        <option value="option2" disabled>Sphere Visualizer (Coming Soon)</option>
+                        <option value="option3" disabled>Waveform Visualizer (Coming Soon)</option>
+                        <option value="option4" disabled>Particle System Visualizer (Coming Soon)</option>
+                        <option value="option5" disabled>Text Visualizer (Coming Soon)</option>
+                        <option value="option6" disabled>Equalizer Visualizer (Coming Soon)</option>
+                        <option value="option7" disabled>Geometric Shape Visualizer (Coming Soon)</option>
+                        <option value="option8" disabled>Fractal Visualizer (Coming Soon)</option>
+                    </select>
+
+                    <div id="option1-div" class="option-div">
+                        <div class="number-bars">
+                            <span>Number of Bars:</span>
+                            <input type="text" id="number-bars">
+                        </div>
+                        <div class="bar-color">
+                            <span>Bar Color:</span>
+                            <input type="color" id="bar-color">
+                        </div>
+                        <span></span>
+                    </div>
+                    
+                    <div id="option2-div" class="option-div">
+                        Option 2 content
+                    </div>
+                    
+                    <div id="option3-div" class="option-div">
+                        Option 3 content
+                    </div>
+                    
+                    <div id="option4-div" class="option-div">
+                        Option 4 content
+                    </div>
+                    
+                    <div id="option5-div" class="option-div">
+                        Option 5 content
+                    </div>
+
+                    <div id="option6-div" class="option-div">
+                        Option 6 content
+                    </div>
+
+                    <div id="option7-div" class="option-div">
+                        Option 7 content
+                    </div>
+
+                    <div id="option8-div" class="option-div">
+                        Option 8 content
+                    </div>
+                      
+                      
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+
+    <script type="module" src="index.js"></script>
+    <script type="module" src="BarViz.js"></script>
+    <script type="module" src="audio.js"></script>
+   
+</html>
