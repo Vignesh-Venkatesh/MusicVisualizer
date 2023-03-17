@@ -4,6 +4,9 @@ let stopButton = document.getElementById("stop-btn");
 
 playButton.addEventListener("click", () => {
     console.log(audioContext);
+    if (audioContext.state === "suspended"){
+        audioContext.resume();
+    }
     audio.play()
 })
 
