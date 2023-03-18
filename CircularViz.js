@@ -9,10 +9,14 @@ let colorValue = "#ffffff"
 
 let sliderInput = document.getElementById("circular-range-slider");
 let sliderValue = 0;
+let speedInput = document.getElementById("speed-range-slider");
+let speedValue = 0;
 
-let defaultNumBars = 128;
+let defaultNumBars = 30;
 let maxBarLength = 60 / 2; // maximum bar length based on canvas size
 let fixedPoint = {x: 480 / 2, y: 270 / 2}; // center of the canvas
+let angle = 0;
+
 export function CircularViz() {
     // Number of Bars required
     barInput.addEventListener('input', () => {
@@ -26,11 +30,15 @@ export function CircularViz() {
 
     // Changing the color of the visualizer
     colorInput.addEventListener('input', () => {
-    colorValue = colorInput.value;
+        colorValue = colorInput.value;
     });
 
     sliderInput.addEventListener('input', () => {
-    sliderValue = parseFloat(sliderInput.value);
+        sliderValue = parseFloat(sliderInput.value);
+    });
+
+    speedInput.addEventListener('input', () => {
+        speedValue = parseFloat(speedInput.value);
     });
 
     analyser.getByteTimeDomainData(dataArray);
@@ -46,12 +54,12 @@ export function CircularViz() {
     for (let i = 0; i < bars; i++) {
         const amplitude = dataArray[Math.floor(i * dataArray.length / bars)];
         const barLength = amplitude * barHeightScale;
-        const angle = i * barWidth;
+        const barAngle = angle + i * barWidth;
 
-        const x1 = fixedPoint.x + Math.cos(angle) * (maxBarLength + sliderValue) / 2;
-        const y1 = fixedPoint.y + Math.sin(angle) * (maxBarLength + sliderValue) / 2;
-        const x2 = fixedPoint.x + Math.cos(angle) * (maxBarLength + sliderValue) / 2 + barLength * Math.cos(angle);
-        const y2 = fixedPoint.y + Math.sin(angle) * (maxBarLength + sliderValue) / 2 + barLength * Math.sin(angle);
+        const x1 = fixedPoint.x + Math.cos(barAngle) * (maxBarLength + sliderValue) / 2;
+        const y1 = fixedPoint.y + Math.sin(barAngle) * (maxBarLength + sliderValue) / 2;
+        const x2 = fixedPoint.x + Math.cos(barAngle) * (maxBarLength + sliderValue) / 2 + barLength * Math.cos(barAngle);
+        const y2 = fixedPoint.y + Math.sin(barAngle) * (maxBarLength + sliderValue) / 2 + barLength * Math.sin(barAngle);
 
         ctx.beginPath();
         ctx.moveTo(x1, y1);
@@ -61,6 +69,6 @@ export function CircularViz() {
         ctx.stroke();
     }
 
+    angle += speedValue; // increment the angle by a small amount
     requestAnimationFrame(CircularViz);
 }
-  
