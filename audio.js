@@ -25,7 +25,12 @@ export let analyser;
 export let dataArray;
 export let fftsize = 512;
 const importSongButton = document.getElementById("import-song-button");
+const options = document.getElementById("myDropdown");
+// When the user loads the page for the first time, the select options are not shown
+
+options.style.display = "none"
 export var audio = new Audio();
+
 importSongButton.addEventListener("click", () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -33,6 +38,7 @@ importSongButton.addEventListener("click", () => {
     input.addEventListener("change", () => {
     const file = input.files[0];
     const fileName = document.getElementById("import-song-name")
+    
     let displayFileName = ""
     if (file.name.length > 21){
         displayFileName = file.name.slice(0,8)+" ..... "+file.name.slice(-8)
@@ -40,7 +46,8 @@ importSongButton.addEventListener("click", () => {
         displayFileName = file.name
     }
     fileName.innerHTML = displayFileName;
-    console.log("Selected file:", file);
+    // Select options are shown after the file has been chosen
+    options.style.display = "flex"
     audio.src = URL.createObjectURL(file);
     
     });
@@ -55,6 +62,7 @@ importSongButton.addEventListener("click", () => {
     // set audio analyser
     analyser.fftsize = fftsize; // fast fourier transform
     let bufferLength = analyser.frequencyBinCount;
+    // bufferLength = bufferLength;
     dataArray = new Uint8Array(bufferLength);
 
     // bind our analyser to the media element source

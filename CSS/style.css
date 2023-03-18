@@ -43,21 +43,17 @@ body{
     height: 450px;
     border-radius: 10px;
     align-items: center;
-    /* background-color: var(--tile-color-2);
-    box-shadow: 5px 5px 5px var(--tile-shadow-color); */
 }
 
 .screen{
     display: flex;
     flex-direction: column;
-    /* border: 2px solid blue; */
     margin-right: 20px;
 }
 
 .option{
     width: 400px;
     height: calc(100% - 24%);
-    /* border: 2px solid red; */
     background-color: var(--tile-color);
     box-shadow: 5px 5px 5px var(--tile-shadow-color);
     border-radius: 10px;
@@ -65,23 +61,15 @@ body{
 }
 
 .options{
-    /* height: calc(100%-10px); */
     display: flex;
-    /* flex: 1; */
-    /* border: 2px dashed blue; */
     flex-direction: column;
-    align-items: center;
-    
-    /* background-color: blue; */
-    
+    align-items: center;    
 }
 
 .import-bar{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* border: 2px solid green; */
-    /* background-color: green; */
     margin-top: 10px;
     width: auto;
     padding: 10px;
@@ -231,7 +219,6 @@ select{
     box-shadow: 5px 5px 5px var(--tile-shadow-color);
 }
 canvas{
-    /* border: 2px dashed black; */
     background-color: black;
     display: block;
     margin: 0 auto;
@@ -255,14 +242,22 @@ canvas{
     align-items: center;
 }
 
-#bar-color{
+.circular-range-slider{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.bar-color input{
     height: 30px;
     border: none;
     cursor: pointer;
     background: none;
 }
 
-#number-bars{
+.number-bars input{
     background: var(--tile-color);
     border: 2px solid black;
     border-radius: 5px;
@@ -278,3 +273,29 @@ canvas{
 .bar-color{
     font-weight: bold;
 }
+
+.circular-range-slider .slider{
+    appearance: none;
+    width: 50%;
+    opacity: 0.7;
+    height: 5px;
+    background: var(--font-color-2);
+    transition: all 0.3s;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.circular-range-slider .slider:hover{
+    opacity: 1;
+}
+
+.circular-range-slider .slider::-webkit-slider-thumb{
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: var(--font-color-3);
+    cursor: pointer;
+}
+
+

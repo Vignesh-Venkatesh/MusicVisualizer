@@ -1,13 +1,13 @@
-import { fftsize } from './audio.js';
 import { canvas } from './index.js';
 import { analyser } from './audio.js';
 import { dataArray } from './audio.js';
 
-let barInput = document.getElementById("number-bars");
-let colorInput = document.getElementById("bar-color");
+let barInput = document.getElementById("freq-number-bars");
+let colorInput = document.getElementById("freq-bar-color");
 let colorValue = "#ffffff"
 
-let barfftsize = 128;
+
+let defaultNumBars = 128;
 export function barViz(){
 
     // Number of Bars required
@@ -15,24 +15,29 @@ export function barViz(){
         let barValue = barInput.value;
 
         if (barValue === "" || parseInt(barValue)>1500){
-            barfftsize = 128
+            defaultNumBars = 128
         }
         else {
-            barfftsize = parseInt(barValue)
+            defaultNumBars = parseInt(barValue)
         }
     })
 
+    // Changing the color of the visualizer
     colorInput.addEventListener('input', ()=>{
         colorValue = colorInput.value;
     })
 
+
     analyser.getByteTimeDomainData(dataArray);
+    
+    // creating the canvas object
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let bars = barfftsize;
+    let bars = defaultNumBars;
     let barWidth = canvas.width / bars;
     let barHeightScale = canvas.height / 300;
+
 
     for (let i = 0; i < bars; i++) {
         let barHeight = dataArray[Math.floor(i * dataArray.length / bars)] * barHeightScale;
